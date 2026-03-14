@@ -1,0 +1,20 @@
+{
+  "task": "Explain how KV cache reuse in LLM serving reduces latency and energy consumption. Be specific and technical.",
+  "model": "Qwen/Qwen2.5-7B-Instruct",
+  "gpu": "NVIDIA B200",
+  "hops": [
+    {
+      "node": "drafter",
+      "time_s": 5.0063,
+      "gpu_energy_j": 2012.166
+    },
+    {
+      "node": "reviewer",
+      "time_s": 4.6135,
+      "gpu_energy_j": 1945.536
+    }
+  ],
+  "total_time_s": 9.6345,
+  "total_energy_j": 3957.702,
+  "overhead_j": -0.0
+}

@@ -1,0 +1,14 @@
+# Environments
+miniforge3/
+bench-env/
+
+# Cache
+hf-cache/
+
+# Job artifacts
+artifacts/
+logs/
+
+# home dir dotfiles
+.*
+!.gitignore

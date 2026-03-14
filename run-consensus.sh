@@ -1,9 +1,9 @@
 #!/bin/bash
-#SBATCH --job-name=consensus
+#SBATCH --job-name=living-model
 #SBATCH --gpus=1
 #SBATCH --cpus-per-gpu=16
 #SBATCH --mem=128G
-#SBATCH --time=00:30:00
+#SBATCH --time=01:00:00
 #SBATCH --output=logs/%x-%j.out
 #SBATCH --error=logs/%x-%j.err
 
@@ -13,6 +13,9 @@ conda activate bench
 export HF_HOME=~/hf-cache
 export LIBRARY_PATH=/usr/local/cuda/lib64/stubs:$LIBRARY_PATH
 export SGLANG_DISABLE_CUDNN_CHECK=1
+
+# Install zeus if not present
+pip install zeus-ml 2>/dev/null | tail -1
 
 # ---------------------------------------------------------------------------
 # Start SGLang server
@@ -25,14 +28,12 @@ python -m sglang.launch_server \
   --disable-cuda-graph &
 SERVER_PID=$!
 
-# Wait for server to be ready
 echo "Waiting for server..."
 for i in $(seq 1 60); do
   curl -s http://localhost:25000/health > /dev/null 2>&1 && break
   sleep 5
 done
 
-# Verify server is up
 if ! curl -s http://localhost:25000/health > /dev/null 2>&1; then
   echo "ERROR: Server failed to start"
   kill $SERVER_PID 2>/dev/null
@@ -41,14 +42,15 @@ fi
 echo "Server ready!"
 
 # ---------------------------------------------------------------------------
-# Run consensus
+# Run long consensus: 7 agents, up to 15 rounds, 500 max tokens
+# Topic: living stateful models
 # ---------------------------------------------------------------------------
 python consensus.py \
-  --topic "What is the most important challenge in AI safety and how should it be addressed?" \
-  --num-agents 5 \
-  --max-rounds 5 \
-  --temperature 0.7 \
-  --max-tokens 300
+  --topic "What is the best architecture for a living, non-stateless AI model? Should persistent memory live inside the weights (continual learning / online fine-tuning), outside the weights (RAG / knowledge graphs / external memory), or in a hybrid? How do you handle catastrophic forgetting vs. stale knowledge? What are the right trade-offs between plasticity and stability, and how do you make the whole system auditable and reversible? Be specific about implementation — what concrete components, data flows, and failure modes matter most?" \
+  --num-agents 7 \
+  --max-rounds 15 \
+  --temperature 0.8 \
+  --max-tokens 500
 
 # ---------------------------------------------------------------------------
 # Cleanup

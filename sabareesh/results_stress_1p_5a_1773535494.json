@@ -1,0 +1,46 @@
+{
+  "num_panels": 1,
+  "num_agents": 5,
+  "max_concurrent": 5,
+  "total_requests": 15,
+  "total_time_s": 14.75,
+  "effective_req_per_s": 1.02,
+  "total_energy_j": 9227.58,
+  "j_per_request": 615.2,
+  "avg_watts": 625.0,
+  "panels": {
+    "0": {
+      "panel_id": 0,
+      "topic": "What is the best architecture for a living, non-stateless AI model? Should persi",
+      "rounds": 3,
+      "total_requests": 15,
+      "timings": [
+        {
+          "round": 0,
+          "wall_s": 5.6,
+          "avg_latency_s": 5.1,
+          "max_latency_s": 5.6,
+          "avg_agreement": 0.15,
+          "avg_confidence": 0.91
+        },
+        {
+          "round": 1,
+          "wall_s": 4.18,
+          "avg_latency_s": 4.0,
+          "max_latency_s": 4.17,
+          "avg_agreement": 0.87,
+          "avg_confidence": 0.95
+        },
+        {
+          "round": 2,
+          "wall_s": 4.98,
+          "avg_latency_s": 4.74,
+          "max_latency_s": 4.98,
+          "avg_agreement": 0.96,
+          "avg_confidence": 0.95
+        }
+      ],
+      "consensus": true
+    }
+  }
+}

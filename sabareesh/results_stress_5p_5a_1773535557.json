@@ -1,0 +1,202 @@
+{
+  "num_panels": 5,
+  "num_agents": 5,
+  "max_concurrent": 25,
+  "total_requests": 90,
+  "total_time_s": 26.11,
+  "effective_req_per_s": 3.45,
+  "total_energy_j": 19772.209,
+  "j_per_request": 219.7,
+  "avg_watts": 757.0,
+  "panels": {
+    "0": {
+      "panel_id": 0,
+      "topic": "What is the best architecture for a living, non-stateless AI model? Should persi",
+      "rounds": 3,
+      "total_requests": 15,
+      "timings": [
+        {
+          "round": 0,
+          "wall_s": 5.73,
+          "avg_latency_s": 4.28,
+          "max_latency_s": 5.73,
+          "avg_agreement": 0.0,
+          "avg_confidence": 0.88
+        },
+        {
+          "round": 1,
+          "wall_s": 5.29,
+          "avg_latency_s": 5.2,
+          "max_latency_s": 5.28,
+          "avg_agreement": 0.86,
+          "avg_confidence": 0.93
+        },
+        {
+          "round": 2,
+          "wall_s": 7.64,
+          "avg_latency_s": 6.95,
+          "max_latency_s": 7.64,
+          "avg_agreement": 0.95,
+          "avg_confidence": 0.93
+        }
+      ],
+      "consensus": true
+    },
+    "2": {
+      "panel_id": 2,
+      "topic": "What is the right security and governance model for an AI that continuously lear",
+      "rounds": 3,
+      "total_requests": 15,
+      "timings": [
+        {
+          "round": 0,
+          "wall_s": 5.2,
+          "avg_latency_s": 4.06,
+          "max_latency_s": 5.19,
+          "avg_agreement": 0.31,
+          "avg_confidence": 0.89
+        },
+        {
+          "round": 1,
+          "wall_s": 7.32,
+          "avg_latency_s": 5.9,
+          "max_latency_s": 7.32,
+          "avg_agreement": 0.87,
+          "avg_confidence": 0.93
+        },
+        {
+          "round": 2,
+          "wall_s": 6.5,
+          "avg_latency_s": 6.31,
+          "max_latency_s": 6.5,
+          "avg_agreement": 0.94,
+          "avg_confidence": 0.94
+        }
+      ],
+      "consensus": true
+    },
+    "1": {
+      "panel_id": 1,
+      "topic": "How should a living model handle conflicting memories \u2014 when new observations co",
+      "rounds": 4,
+      "total_requests": 20,
+      "timings": [
+        {
+          "round": 0,
+          "wall_s": 4.57,
+          "avg_latency_s": 3.86,
+          "max_latency_s": 4.57,
+          "avg_agreement": 0.2,
+          "avg_confidence": 0.85
+        },
+        {
+          "round": 1,
+          "wall_s": 8.56,
+          "avg_latency_s": 7.13,
+          "max_latency_s": 8.55,
+          "avg_agreement": 0.79,
+          "avg_confidence": 0.89
+        },
+        {
+          "round": 2,
+          "wall_s": 6.75,
+          "avg_latency_s": 5.93,
+          "max_latency_s": 6.75,
+          "avg_agreement": 0.92,
+          "avg_confidence": 0.95
+        },
+        {
+          "round": 3,
+          "wall_s": 5.89,
+          "avg_latency_s": 5.59,
+          "max_latency_s": 5.89,
+          "avg_agreement": 0.98,
+          "avg_confidence": 0.95
+        }
+      ],
+      "consensus": true
+    },
+    "4": {
+      "panel_id": 4,
+      "topic": "What biological memory mechanisms (hippocampal replay, memory consolidation, syn",
+      "rounds": 4,
+      "total_requests": 20,
+      "timings": [
+        {
+          "round": 0,
+          "wall_s": 6.59,
+          "avg_latency_s": 4.77,
+          "max_latency_s": 6.58,
+          "avg_agreement": 0.4,
+          "avg_confidence": 0.85
+        },
+        {
+          "round": 1,
+          "wall_s": 7.34,
+          "avg_latency_s": 5.55,
+          "max_latency_s": 7.34,
+          "avg_agreement": 0.83,
+          "avg_confidence": 0.88
+        },
+        {
+          "round": 2,
+          "wall_s": 6.69,
+          "avg_latency_s": 5.78,
+          "max_latency_s": 6.69,
+          "avg_agreement": 0.91,
+          "avg_confidence": 0.94
+        },
+        {
+          "round": 3,
+          "wall_s": 5.25,
+          "avg_latency_s": 5.01,
+          "max_latency_s": 5.25,
+          "avg_agreement": 0.97,
+          "avg_confidence": 0.95
+        }
+      ],
+      "consensus": true
+    },
+    "3": {
+      "panel_id": 3,
+      "topic": "How do you scale a living model's memory system across distributed infrastructur",
+      "rounds": 4,
+      "total_requests": 20,
+      "timings": [
+        {
+          "round": 0,
+          "wall_s": 4.02,
+          "avg_latency_s": 3.74,
+          "max_latency_s": 4.01,
+          "avg_agreement": 0.3,
+          "avg_confidence": 0.88
+        },
+        {
+          "round": 1,
+          "wall_s": 7.68,
+          "avg_latency_s": 6.98,
+          "max_latency_s": 7.67,
+          "avg_agreement": 0.78,
+          "avg_confidence": 0.88
+        },
+        {
+          "round": 2,
+          "wall_s": 7.54,
+          "avg_latency_s": 7.04,
+          "max_latency_s": 7.53,
+          "avg_agreement": 0.88,
+          "avg_confidence": 0.91
+        },
+        {
+          "round": 3,
+          "wall_s": 6.87,
+          "avg_latency_s": 6.45,
+          "max_latency_s": 6.87,
+          "avg_agreement": 0.94,
+          "avg_confidence": 0.93
+        }
+      ],
+      "consensus": true
+    }
+  }
+}

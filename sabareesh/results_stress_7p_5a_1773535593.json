@@ -1,0 +1,268 @@
+{
+  "num_panels": 7,
+  "num_agents": 5,
+  "max_concurrent": 35,
+  "total_requests": 120,
+  "total_time_s": 29.57,
+  "effective_req_per_s": 4.06,
+  "total_energy_j": 23042.545,
+  "j_per_request": 192.0,
+  "avg_watts": 779.0,
+  "panels": {
+    "5": {
+      "panel_id": 5,
+      "topic": "How should a living model handle personalization vs. shared knowledge? When one ",
+      "rounds": 2,
+      "total_requests": 10,
+      "timings": [
+        {
+          "round": 0,
+          "wall_s": 4.06,
+          "avg_latency_s": 3.86,
+          "max_latency_s": 4.06,
+          "avg_agreement": 0.32,
+          "avg_confidence": 0.91
+        },
+        {
+          "round": 1,
+          "wall_s": 8.45,
+          "avg_latency_s": 7.91,
+          "max_latency_s": 8.44,
+          "avg_agreement": 0.94,
+          "avg_confidence": 0.95
+        }
+      ],
+      "consensus": true
+    },
+    "1": {
+      "panel_id": 1,
+      "topic": "How should a living model handle conflicting memories \u2014 when new observations co",
+      "rounds": 3,
+      "total_requests": 15,
+      "timings": [
+        {
+          "round": 0,
+          "wall_s": 4.76,
+          "avg_latency_s": 4.17,
+          "max_latency_s": 4.75,
+          "avg_agreement": 0.39,
+          "avg_confidence": 0.86
+        },
+        {
+          "round": 1,
+          "wall_s": 8.06,
+          "avg_latency_s": 7.53,
+          "max_latency_s": 8.06,
+          "avg_agreement": 0.81,
+          "avg_confidence": 0.89
+        },
+        {
+          "round": 2,
+          "wall_s": 8.27,
+          "avg_latency_s": 7.95,
+          "max_latency_s": 8.27,
+          "avg_agreement": 0.93,
+          "avg_confidence": 0.94
+        }
+      ],
+      "consensus": true
+    },
+    "2": {
+      "panel_id": 2,
+      "topic": "What is the right security and governance model for an AI that continuously lear",
+      "rounds": 3,
+      "total_requests": 15,
+      "timings": [
+        {
+          "round": 0,
+          "wall_s": 7.5,
+          "avg_latency_s": 5.65,
+          "max_latency_s": 7.5,
+          "avg_agreement": 0.32,
+          "avg_confidence": 0.88
+        },
+        {
+          "round": 1,
+          "wall_s": 8.29,
+          "avg_latency_s": 7.67,
+          "max_latency_s": 8.29,
+          "avg_agreement": 0.9,
+          "avg_confidence": 0.94
+        },
+        {
+          "round": 2,
+          "wall_s": 8.13,
+          "avg_latency_s": 7.83,
+          "max_latency_s": 8.13,
+          "avg_agreement": 0.97,
+          "avg_confidence": 0.95
+        }
+      ],
+      "consensus": true
+    },
+    "4": {
+      "panel_id": 4,
+      "topic": "What biological memory mechanisms (hippocampal replay, memory consolidation, syn",
+      "rounds": 4,
+      "total_requests": 20,
+      "timings": [
+        {
+          "round": 0,
+          "wall_s": 5.29,
+          "avg_latency_s": 4.79,
+          "max_latency_s": 5.28,
+          "avg_agreement": 0.36,
+          "avg_confidence": 0.85
+        },
+        {
+          "round": 1,
+          "wall_s": 8.37,
+          "avg_latency_s": 7.43,
+          "max_latency_s": 8.36,
+          "avg_agreement": 0.7,
+          "avg_confidence": 0.85
+        },
+        {
+          "round": 2,
+          "wall_s": 7.65,
+          "avg_latency_s": 7.46,
+          "max_latency_s": 7.65,
+          "avg_agreement": 0.84,
+          "avg_confidence": 0.88
+        },
+        {
+          "round": 3,
+          "wall_s": 6.8,
+          "avg_latency_s": 6.75,
+          "max_latency_s": 6.8,
+          "avg_agreement": 0.97,
+          "avg_confidence": 0.95
+        }
+      ],
+      "consensus": true
+    },
+    "0": {
+      "panel_id": 0,
+      "topic": "What is the best architecture for a living, non-stateless AI model? Should persi",
+      "rounds": 4,
+      "total_requests": 20,
+      "timings": [
+        {
+          "round": 0,
+          "wall_s": 6.18,
+          "avg_latency_s": 5.51,
+          "max_latency_s": 6.18,
+          "avg_agreement": 0.0,
+          "avg_confidence": 0.88
+        },
+        {
+          "round": 1,
+          "wall_s": 7.48,
+          "avg_latency_s": 7.05,
+          "max_latency_s": 7.47,
+          "avg_agreement": 0.89,
+          "avg_confidence": 0.93
+        },
+        {
+          "round": 2,
+          "wall_s": 8.54,
+          "avg_latency_s": 7.52,
+          "max_latency_s": 8.53,
+          "avg_agreement": 0.91,
+          "avg_confidence": 0.94
+        },
+        {
+          "round": 3,
+          "wall_s": 6.47,
+          "avg_latency_s": 6.14,
+          "max_latency_s": 6.47,
+          "avg_agreement": 0.97,
+          "avg_confidence": 0.95
+        }
+      ],
+      "consensus": true
+    },
+    "3": {
+      "panel_id": 3,
+      "topic": "How do you scale a living model's memory system across distributed infrastructur",
+      "rounds": 4,
+      "total_requests": 20,
+      "timings": [
+        {
+          "round": 0,
+          "wall_s": 6.91,
+          "avg_latency_s": 5.8,
+          "max_latency_s": 6.9,
+          "avg_agreement": 0.17,
+          "avg_confidence": 0.86
+        },
+        {
+          "round": 1,
+          "wall_s": 8.08,
+          "avg_latency_s": 7.44,
+          "max_latency_s": 8.08,
+          "avg_agreement": 0.85,
+          "avg_confidence": 0.93
+        },
+        {
+          "round": 2,
+          "wall_s": 7.99,
+          "avg_latency_s": 7.11,
+          "max_latency_s": 7.99,
+          "avg_agreement": 0.92,
+          "avg_confidence": 0.93
+        },
+        {
+          "round": 3,
+          "wall_s": 6.19,
+          "avg_latency_s": 5.81,
+          "max_latency_s": 6.19,
+          "avg_agreement": 0.95,
+          "avg_confidence": 0.95
+        }
+      ],
+      "consensus": true
+    },
+    "6": {
+      "panel_id": 6,
+      "topic": "What is the energy and compute cost of maintaining a living model vs. periodic r",
+      "rounds": 4,
+      "total_requests": 20,
+      "timings": [
+        {
+          "round": 0,
+          "wall_s": 8.1,
+          "avg_latency_s": 6.37,
+          "max_latency_s": 8.09,
+          "avg_agreement": 0.26,
+          "avg_confidence": 0.83
+        },
+        {
+          "round": 1,
+          "wall_s": 8.37,
+          "avg_latency_s": 7.48,
+          "max_latency_s": 8.37,
+          "avg_agreement": 0.75,
+          "avg_confidence": 0.87
+        },
+        {
+          "round": 2,
+          "wall_s": 7.68,
+          "avg_latency_s": 7.41,
+          "max_latency_s": 7.68,
+          "avg_agreement": 0.91,
+          "avg_confidence": 0.88
+        },
+        {
+          "round": 3,
+          "wall_s": 5.41,
+          "avg_latency_s": 5.17,
+          "max_latency_s": 5.41,
+          "avg_agreement": 0.96,
+          "avg_confidence": 0.93
+        }
+      ],
+      "consensus": true
+    }
+  }
+}

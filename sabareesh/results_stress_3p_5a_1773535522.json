@@ -1,0 +1,104 @@
+{
+  "num_panels": 3,
+  "num_agents": 5,
+  "max_concurrent": 15,
+  "total_requests": 40,
+  "total_time_s": 15.34,
+  "effective_req_per_s": 2.61,
+  "total_energy_j": 11009.233,
+  "j_per_request": 275.2,
+  "avg_watts": 718.0,
+  "panels": {
+    "0": {
+      "panel_id": 0,
+      "topic": "What is the best architecture for a living, non-stateless AI model? Should persi",
+      "rounds": 2,
+      "total_requests": 10,
+      "timings": [
+        {
+          "round": 0,
+          "wall_s": 4.68,
+          "avg_latency_s": 3.99,
+          "max_latency_s": 4.68,
+          "avg_agreement": 0.17,
+          "avg_confidence": 0.88
+        },
+        {
+          "round": 1,
+          "wall_s": 5.58,
+          "avg_latency_s": 4.93,
+          "max_latency_s": 5.58,
+          "avg_agreement": 0.92,
+          "avg_confidence": 0.95
+        }
+      ],
+      "consensus": true
+    },
+    "1": {
+      "panel_id": 1,
+      "topic": "How should a living model handle conflicting memories \u2014 when new observations co",
+      "rounds": 3,
+      "total_requests": 15,
+      "timings": [
+        {
+          "round": 0,
+          "wall_s": 3.94,
+          "avg_latency_s": 3.76,
+          "max_latency_s": 3.94,
+          "avg_agreement": 0.12,
+          "avg_confidence": 0.86
+        },
+        {
+          "round": 1,
+          "wall_s": 5.29,
+          "avg_latency_s": 5.02,
+          "max_latency_s": 5.28,
+          "avg_agreement": 0.86,
+          "avg_confidence": 0.91
+        },
+        {
+          "round": 2,
+          "wall_s": 5.13,
+          "avg_latency_s": 5.03,
+          "max_latency_s": 5.13,
+          "avg_agreement": 0.96,
+          "avg_confidence": 0.95
+        }
+      ],
+      "consensus": true
+    },
+    "2": {
+      "panel_id": 2,
+      "topic": "What is the right security and governance model for an AI that continuously lear",
+      "rounds": 3,
+      "total_requests": 15,
+      "timings": [
+        {
+          "round": 0,
+          "wall_s": 4.68,
+          "avg_latency_s": 4.06,
+          "max_latency_s": 4.67,
+          "avg_agreement": 0.29,
+          "avg_confidence": 0.88
+        },
+        {
+          "round": 1,
+          "wall_s": 5.74,
+          "avg_latency_s": 5.31,
+          "max_latency_s": 5.73,
+          "avg_agreement": 0.85,
+          "avg_confidence": 0.93
+        },
+        {
+          "round": 2,
+          "wall_s": 4.92,
+          "avg_latency_s": 4.8,
+          "max_latency_s": 4.92,
+          "avg_agreement": 0.93,
+          "avg_confidence": 0.94
+        }
+      ],
+      "consensus": true
+    }
+  }
+}

@@ -176,7 +176,39 @@ Key observations:
 - **Beyond 100 concurrent, throughput drops slightly** — GPU becomes compute-bound, not memory-bound
 - GPU power increases only 664→840W (+26%) while doing 6x more useful work
 
-### 4.4 Orchestration Overhead is Negligible
+### 4.4 Detailed Per-Hop Energy Profiling
+
+Serial (1 agent at a time, exact Zeus per-hop measurement) vs Parallel (5 concurrent, time-attributed):
+
+**Serial — Energy by Round (context grows each round):**
+
+| Round | Avg Context | Avg Output | Avg Energy | J/output_tok | Watts |
+|-------|-------------|------------|------------|-------------|-------|
+| 1 | 244 tok | 292 tok | 2,018 J | 6.93 | 644 W |
+| 2 | 1,736 tok | 330 tok | 2,256 J | 6.85 | 712 W |
+| 3 | 1,924 tok | 326 tok | 2,268 J | 6.95 | 714 W |
+
+**Serial — Energy by Agent Persona:**
+
+| Agent | Avg Latency | Avg Energy | J/output_tok | Watts |
+|-------|-------------|------------|-------------|-------|
+| Infrastructure Engineer | 2.93s | 2,098 J | 6.75 | 715 W |
+| Security Lead | 3.03s | 2,086 J | 6.72 | 688 W |
+| Knowledge Graph Specialist | 3.04s | 2,193 J | 6.81 | 722 W |
+| ML Researcher | 3.24s | 2,226 J | 6.73 | 686 W |
+| Systems Architect | 3.72s | 2,301 J | **7.53** | 638 W |
+
+**Serial vs Parallel — Batching Efficiency:**
+
+| Metric | Serial (exact) | Parallel (5 concurrent) | Improvement |
+|--------|---------------|------------------------|-------------|
+| Total energy | 32,711 J | 8,332 J | **3.9x** |
+| Total time | 48.0s | 11.7s | **4.1x** |
+| J/output_token | 6.9 | 1.8 | **3.9x** |
+
+Key finding: **Context growth (244→1924 tokens) barely affects J/output_token** — the cost is dominated by decode, not prefill. Systems Architect is consistently the most expensive agent (longer outputs, lower GPU utilization at 638W vs ~710W average).
+
+### 4.5 Orchestration Overhead is Negligible
 
 LangGraph's orchestration overhead is <1% of total energy. The entire energy budget is spent on LLM inference. Optimization efforts should focus on:
 - Maximizing GPU utilization via concurrency
@@ -217,22 +249,29 @@ LangGraph's orchestration overhead is <1% of total energy. The entire energy bud
 
 | File | Description |
 |------|-------------|
-| `consensus.py` | Full orchestration layer with Zeus energy monitoring, multi-panel support |
+| `consensus.py` | Full NL debate orchestration with Zeus energy monitoring, multi-panel |
+| `consensus_patterns.py` | 4-pattern comparison harness (select/JSON/CoT/NL) with full data schema |
 | `stress_test.py` | Panel scaling sweep for GPU saturation testing |
+| `efficiency_sweep.py` | KV cache × concurrency sweep measuring J/output_token |
+| `detailed_profile.py` | Per-hop energy profiling (serial exact + parallel attributed) |
 | `run-consensus.sh` | Slurm job: single + multi-panel consensus runs |
 | `run-stress.sh` | Slurm job: 1-14 panel scaling sweep |
-| `experiment.py` | Teammate's original 2-agent energy measurement |
-| `results_consensus_*.json` | Structured results from all consensus experiments |
+| `run-efficiency.sh` | Slurm job: KV cache × concurrency sweep |
+| `run-profile.sh` | Slurm job: detailed per-hop profiling |
+| `run-patterns.sh` | Slurm job: 4-pattern comparison (headline + scaling + concurrency) |
+| `results_consensus_*.json` | Consensus experiment results |
 | `results_multipanel_*.json` | Multi-panel comparison results |
-| `results_stress_*.json` | Scaling sweep results |
+| `results_stress_*.json` | Panel scaling sweep results |
+| `results_eff_*.json` | Efficiency sweep results (18 data points) |
+| `results_efficiency_summary.json` | Summary table of all efficiency data |
+| `results_detailed_profile_*.json` | Per-hop energy records (serial + parallel) |
 
-## 7. Next Steps
+## 7. Next Steps (In Progress)
 
-1. **Complete panel scaling sweep** — find the exact saturation point where J/req stops improving
-2. **SGLang server tuning** — `--mem-fraction-static`, `--chunked-prefill-size`, `--schedule-policy`
-3. **Additional communication patterns** — fan-out/fan-in, debate, chain-of-experts
+1. **4-Pattern Comparison** (consensus_patterns.py) — Test 1: headline comparison (select vs JSON vs CoT vs NL debate), Test 2: agent count scaling, Test 4: concurrency scaling. Core thesis: structured patterns deliver 10-20× energy savings for same consensus outcome.
+2. **Cross-model comparison** — same workload on Qwen3.5-9B vs 27B: energy per token of intelligence
+3. **SGLang native select()** — use SGLang's constrained decoding for true single-token votes
 4. **Per-agent temperature control** — skeptic gets high temp, pragmatist gets low temp
-5. **Cross-model comparison** — same workload on Qwen3.5-9B vs 27B: energy per token of intelligence
 
 ---
 

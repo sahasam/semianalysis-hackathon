@@ -263,12 +263,15 @@ def pattern_json(base_url, model, agent_id, prompt, prior_votes, categories):
 
 
 def pattern_cot_select(base_url, model, agent_id, prompt, prior_votes, categories):
-    """Pattern 3: Chain-of-thought reasoning + constrained vote."""
+    """Pattern 3: Chain-of-thought reasoning + constrained vote.
+    Thinking ENABLED — full reasoning chain before the answer."""
     messages = [
         {"role": "system", "content": (
-            "You are a customer service classifier. Think step by step, then give your final answer.\n"
+            "You are a customer service classifier. Think carefully step by step.\n"
+            "Consider what the customer is really asking for. Analyze the tone, "
+            "specific words, and underlying intent before classifying.\n"
             f"Valid categories: {', '.join(categories)}\n"
-            "Format your response as:\nReasoning: <your analysis>\nAnswer: <category>"
+            "Format your response as:\nReasoning: <your detailed analysis>\nAnswer: <category>"
         )},
         {"role": "user", "content": (
             f"Message: {prompt}\n"
@@ -279,8 +282,8 @@ def pattern_cot_select(base_url, model, agent_id, prompt, prior_votes, categorie
 
     content, out_tokens, in_tokens = sglang_chat(
         base_url, model, messages,
-        max_tokens=250, temperature=0.5,
-        extra_body={"chat_template_kwargs": {"enable_thinking": False}}
+        max_tokens=8000, temperature=0.5,
+        extra_body={}  # thinking ENABLED for CoT
     )
 
     # Extract final answer
@@ -305,25 +308,29 @@ def pattern_cot_select(base_url, model, agent_id, prompt, prior_votes, categorie
 
 
 def pattern_nl_debate(base_url, model, agent_id, prompt, prior_votes, categories):
-    """Pattern 4: Full NL debate — paragraph-length argument + extracted vote."""
+    """Pattern 4: Full NL debate — paragraph-length argument + extracted vote.
+    Thinking ENABLED — Qwen3.5 generates full reasoning chain."""
     messages = [
         {"role": "system", "content": (
             "You are a customer service expert participating in a group classification exercise.\n"
-            "Argue for your classification. Consider other agents' perspectives.\n"
+            "Think deeply and critically about the customer's intent. Consider edge cases, "
+            "ambiguity, and the subtle differences between categories.\n"
+            "If other agents disagree with you, carefully analyze their reasoning and either "
+            "defend your position with new evidence or acknowledge their stronger argument.\n"
             f"Valid categories: {', '.join(categories)}\n"
             "End your response with: Final answer: <category>"
         )},
         {"role": "user", "content": (
             f"Customer message: {prompt}\n"
             + (f"\nOther agents' arguments from previous round:\n{json.dumps(prior_votes, indent=2)}\n" if prior_votes else "")
-            + "\nProvide your detailed argument and final classification."
+            + "\nProvide your thorough analysis and final classification."
         )}
     ]
 
     content, out_tokens, in_tokens = sglang_chat(
         base_url, model, messages,
-        max_tokens=500, temperature=0.7,
-        extra_body={"chat_template_kwargs": {"enable_thinking": False}}
+        max_tokens=10000, temperature=0.7,
+        extra_body={}  # thinking ENABLED for NL debate
     )
 
     content_clean = re.sub(r'<think>.*?</think>', '', content, flags=re.DOTALL).strip()

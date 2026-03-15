@@ -41,7 +41,10 @@ done
 # === Run patterns benchmark ===
 cd ~/sahas
 echo "=== Running testbench patterns ==="
-python -m testbench patterns --test all --n-agents 5 --n-tasks 20
+# python -m testbench patterns --test all --n-agents 5 --n-tasks 20
+# python -m testbench patterns --test headline --patterns select,json
+python -m testbench patterns --test scaling --n-tasks 5 --task-multiplier 5 --patterns cot_select
+
 
 # === Cleanup ===
 kill $SERVER_PID

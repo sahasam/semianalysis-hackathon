@@ -51,6 +51,12 @@ async def _gather_with_progress(coros, label: str) -> list:
 # Classification task prompts (customer intent)
 # ---------------------------------------------------------------------------
 
+ALL_PATTERNS = ["select", "json", "cot_select", "nl_debate"]
+
+# "Light" patterns (select, json) produce tiny outputs → GPU underutilised.
+# Use --task-multiplier to scale up their n_tasks for fair comparison.
+LIGHT_PATTERNS = {"select", "json"}
+
 CATEGORIES = ["billing", "technical", "cancellation", "general"]
 
 PROMPTS = [
@@ -341,22 +347,33 @@ def normalize_batch_energy(decisions: list[DecisionLog], batch_total_j: float):
 # Test blocks
 # ---------------------------------------------------------------------------
 
-async def run_test_headline(base_url, model, n_agents, n_tasks, max_rounds, cooldown=10) -> RunLog:
+async def run_test_headline(base_url, model, n_agents, n_tasks, max_rounds,
+                            cooldown=10, patterns=None, task_multiplier=1) -> RunLog:
     """Test 1: All 4 patterns under load — n_tasks fire concurrently per pattern.
 
     All tasks run simultaneously so the GPU is saturated. One Zeus window
     per pattern batch; energy attributed proportionally by latency.
+    Light patterns get task_multiplier applied for fair GPU saturation.
     """
+    patterns = patterns or ALL_PATTERNS
+
     print(f"\n{'#'*70}")
     print(f"  TEST 1: HEADLINE COMPARISON (UNDER LOAD)")
-    print(f"  {n_agents} agents, {n_tasks} concurrent tasks per pattern, max {max_rounds} rounds")
+    print(f"  {n_agents} agents, base {n_tasks} tasks, multiplier {task_multiplier}x, "
+          f"max {max_rounds} rounds")
+    print(f"  patterns: {patterns}")
     print(f"{'#'*70}")
 
     run = RunLog(experiment="patterns", model=model, config={
-        "test": "headline", "n_agents": n_agents, "n_tasks": n_tasks, "max_rounds": max_rounds})
+        "test": "headline", "n_agents": n_agents, "n_tasks": n_tasks,
+        "task_multiplier": task_multiplier,
+        "max_rounds": max_rounds, "patterns": patterns})
 
-    for pattern in ["select", "json", "cot_select", "nl_debate"]:
-        print(f"\n  === Pattern: {pattern} ({n_tasks} concurrent tasks) ===")
+    for pattern in patterns:
+        mult = task_multiplier if pattern in LIGHT_PATTERNS else 1
+        effective_tasks = n_tasks * mult
+        print(f"\n  === Pattern: {pattern} ({effective_tasks} concurrent tasks "
+              f"[{n_tasks} × {mult}x]) ===")
 
         window = f"headline_{pattern}_{int(time.time())}"
         zeus_begin(window)
@@ -367,9 +384,9 @@ async def run_test_headline(base_url, model, n_agents, n_tasks, max_rounds, cool
         coros = [
             run_consensus_task(pattern, base_url, model, n_agents, max_rounds,
                                PROMPTS[i % len(PROMPTS)])
-            for i in range(n_tasks)
+            for i in range(effective_tasks)
         ]
-        print(f"    Launched {n_tasks} tasks...", flush=True)
+        print(f"    Launched {effective_tasks} tasks...", flush=True)
         decs = await _gather_with_progress(coros, pattern)
 
         batch_elapsed = time.perf_counter() - t0
@@ -384,7 +401,7 @@ async def run_test_headline(base_url, model, n_agents, n_tasks, max_rounds, cool
         # Print per-task results
         for i, dec in enumerate(decs):
             converge_str = "YES" if dec.converged else f"NO({dec.final_answer})"
-            print(f"    [{i+1:>2}/{n_tasks}] {converge_str:>6} "
+            print(f"    [{i+1:>2}/{effective_tasks}] {converge_str:>6} "
                   f"rounds={dec.n_rounds} "
                   f"tokens={dec.total_output_tokens:>5} "
                   f"E={dec.total_energy_j:>7.1f}J "
@@ -407,7 +424,7 @@ async def run_test_headline(base_url, model, n_agents, n_tasks, max_rounds, cool
         print(f"  {'':>12}  batch: {batch_j:.0f}J total, {batch_elapsed:.1f}s wall, "
               f"{tok_per_s:.0f} out_tok/s")
 
-        if pattern != "nl_debate":
+        if pattern != patterns[-1]:
             print(f"  Cooling down {cooldown}s...")
             await asyncio.sleep(cooldown)
 
@@ -443,23 +460,31 @@ def _print_headline_table(run: RunLog):
               f"{avg_tok:>8.0f} {avg_rnd:>8.1f} {j_per_out:>9.4f}")
 
 
-async def run_test_scaling(base_url, model, n_tasks, max_rounds, cooldown=10) -> RunLog:
-    """Test 2: Agent count scaling under load — Pattern 1 vs 4.
+async def run_test_scaling(base_url, model, n_tasks, max_rounds,
+                           cooldown=10, patterns=None, task_multiplier=1) -> RunLog:
+    """Test 2: Agent count scaling under load.
 
     All n_tasks fire concurrently for each (pattern, n_agents) config.
     Measures how consensus cost scales with agent count when the GPU is busy.
+    Light patterns get task_multiplier applied for fair GPU saturation.
     """
+    patterns = patterns or ["select", "nl_debate"]
+
     print(f"\n{'#'*70}")
     print(f"  TEST 2: AGENT COUNT SCALING (UNDER LOAD)")
-    print(f"  {n_tasks} concurrent tasks per config")
+    print(f"  base {n_tasks} tasks, multiplier {task_multiplier}x, patterns: {patterns}")
     print(f"{'#'*70}")
 
     run = RunLog(experiment="patterns", model=model, config={
-        "test": "scaling", "n_tasks": n_tasks, "max_rounds": max_rounds})
+        "test": "scaling", "n_tasks": n_tasks, "max_rounds": max_rounds,
+        "task_multiplier": task_multiplier, "patterns": patterns})
 
     for n_agents in [2, 3, 5, 7]:
-        for pattern in ["select", "nl_debate"]:
-            print(f"\n  === {pattern}, {n_agents} agents, {n_tasks} concurrent tasks ===")
+        for pattern in patterns:
+            mult = task_multiplier if pattern in LIGHT_PATTERNS else 1
+            effective_tasks = n_tasks * mult
+            print(f"\n  === {pattern}, {n_agents} agents, {effective_tasks} concurrent tasks "
+                  f"[{n_tasks} × {mult}x] ===")
 
             window = f"scale_{pattern}_{n_agents}a_{int(time.time())}"
             zeus_begin(window)
@@ -468,9 +493,9 @@ async def run_test_scaling(base_url, model, n_tasks, max_rounds, cooldown=10) ->
             coros = [
                 run_consensus_task(pattern, base_url, model, n_agents, max_rounds,
                                    PROMPTS[i % len(PROMPTS)])
-                for i in range(n_tasks)
+                for i in range(effective_tasks)
             ]
-            print(f"    Launched {n_tasks} tasks...", flush=True)
+            print(f"    Launched {effective_tasks} tasks...", flush=True)
             decs = await _gather_with_progress(coros, f"{pattern}/{n_agents}a")
 
             batch_elapsed = time.perf_counter() - t0
@@ -521,7 +546,8 @@ async def run_test_scaling(base_url, model, n_tasks, max_rounds, cooldown=10) ->
     return run
 
 
-async def run_test_concurrency(base_url, model, n_agents, n_tasks, max_rounds, cooldown=10) -> RunLog:
+async def run_test_concurrency(base_url, model, n_agents, n_tasks, max_rounds,
+                               cooldown=10, patterns=None) -> RunLog:
     """Test 3: Concurrency scaling — how J/decision changes with load.
 
     Sweeps batch sizes from 1 (serial baseline) up to 64 (should saturate
@@ -529,11 +555,13 @@ async def run_test_concurrency(base_url, model, n_agents, n_tasks, max_rounds, c
     consensus tasks, repeated until n_tasks are done. This is the only test
     that intentionally varies utilization to find the efficiency sweet spot.
     """
+    patterns = patterns or ["select", "nl_debate"]
     BATCH_SIZES = [1, 8, 16, 32, 64]
 
     print(f"\n{'#'*70}")
     print(f"  TEST 3: CONCURRENCY SCALING (UTILIZATION vs EFFICIENCY)")
     print(f"  {n_agents} agents, {n_tasks} tasks per level, batch_sizes={BATCH_SIZES}")
+    print(f"  patterns: {patterns}")
     print(f"{'#'*70}")
 
     run = RunLog(experiment="patterns", model=model, config={
@@ -544,7 +572,7 @@ async def run_test_concurrency(base_url, model, n_agents, n_tasks, max_rounds, c
     summary_rows = []
 
     for batch_size in BATCH_SIZES:
-        for pattern in ["select", "nl_debate"]:
+        for pattern in patterns:
             print(f"\n  === {pattern}, batch_size={batch_size} "
                   f"({batch_size * n_agents} concurrent LLM calls/round) ===")
 
@@ -688,22 +716,28 @@ def _save_run(run: RunLog, label: str, args):
 
 async def async_main(args):
     all_runs = []
+    patterns = args.patterns.split(",") if args.patterns else None
+
+    tm = args.task_multiplier
 
     if args.test in ("headline", "all"):
         run = await run_test_headline(
-            args.base_url, args.model, args.n_agents, args.n_tasks, args.max_rounds, args.cooldown)
+            args.base_url, args.model, args.n_agents, args.n_tasks, args.max_rounds,
+            args.cooldown, patterns=patterns, task_multiplier=tm)
         _save_run(run, "headline", args)
         all_runs.append(run)
 
     if args.test in ("scaling", "all"):
         run = await run_test_scaling(
-            args.base_url, args.model, args.n_tasks, args.max_rounds, args.cooldown)
+            args.base_url, args.model, args.n_tasks, args.max_rounds,
+            args.cooldown, patterns=patterns, task_multiplier=tm)
         _save_run(run, "scaling", args)
         all_runs.append(run)
 
     if args.test in ("concurrency", "all"):
         run = await run_test_concurrency(
-            args.base_url, args.model, args.n_agents, args.n_tasks, args.max_rounds, args.cooldown)
+            args.base_url, args.model, args.n_agents, args.n_tasks, args.max_rounds,
+            args.cooldown, patterns=patterns)
         _save_run(run, "concurrency", args)
         all_runs.append(run)
 
@@ -741,10 +775,17 @@ def main():
     parser.add_argument("--base-url", default="http://localhost:25000")
     parser.add_argument("--model", default="Qwen/Qwen3.5-27B")
     parser.add_argument("--n-agents", type=int, default=5)
-    parser.add_argument("--n-tasks", type=int, default=20)
+    parser.add_argument("--n-tasks", type=int, default=5,
+                        help="Base concurrent tasks per pattern (default 5)")
+    parser.add_argument("--task-multiplier", type=int, default=5,
+                        help="Multiplier for light patterns (select, json) so they saturate "
+                             "the GPU comparably to heavy patterns (default 5)")
     parser.add_argument("--max-rounds", type=int, default=5)
     parser.add_argument("--cooldown", type=int, default=10)
     parser.add_argument("--test", choices=["headline", "scaling", "concurrency", "all"], default="all")
+    parser.add_argument("--patterns", default=None,
+                        help="Comma-separated patterns to run (e.g. select,json). "
+                             "Default: all 4 for headline, select+nl_debate for scaling/concurrency")
     args = parser.parse_args()
 
     init_zeus()

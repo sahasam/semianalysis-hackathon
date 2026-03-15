@@ -9,6 +9,20 @@ hf-cache/
 artifacts/
 logs/
 
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+dist/
+build/
+.eggs/
+
+# Results (large data)
+sahas/results/
+
 # home dir dotfiles
 .*
 !.gitignore
+
+

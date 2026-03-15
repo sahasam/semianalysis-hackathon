@@ -1,0 +1,81 @@
+decision_id,experiment,pattern,model,n_agents,n_rounds,converged,final_answer,total_input_tokens,total_output_tokens,total_latency_s,total_energy_j,energy_per_hop_j,energy_per_decision_j,j_per_output_token,prompt_text
+97520762,patterns,select,Qwen/Qwen3.5-27B,5,1,True,billing,410,10,7.919,129.8032,25.9606,129.8032,12.98032,I was charged twice for my subscription last month and I need a refund immediately.
+90a6a2cf,patterns,select,Qwen/Qwen3.5-27B,5,1,True,technical,415,10,7.8955,129.8032,25.9606,129.8032,12.98032,My internet keeps dropping every 30 minutes and I've already restarted the router.
+c5aac1a4,patterns,select,Qwen/Qwen3.5-27B,5,1,True,cancellation,405,15,8.4037,136.6142,27.3228,136.6142,9.107613,I want to cancel my account effective immediately and get a prorated refund.
+ea57c5f4,patterns,select,Qwen/Qwen3.5-27B,5,1,True,general,400,10,7.8768,129.8032,25.9606,129.8032,12.98032,What are your business hours and do you have a location near downtown?
+1594e037,patterns,select,Qwen/Qwen3.5-27B,5,1,True,technical,420,10,7.9005,129.8032,25.9606,129.8032,12.98032,The app crashes every time I try to upload a file larger than 10MB.
+9cd57ed6,patterns,select,Qwen/Qwen3.5-27B,5,1,True,general,390,10,7.9006,129.8032,25.9606,129.8032,12.98032,Can you explain the difference between your premium and basic plans?
+7dd1618d,patterns,select,Qwen/Qwen3.5-27B,5,1,True,billing,395,10,7.8042,127.7272,25.5454,127.7272,12.77272,I need to update the credit card on file for automatic payments.
+1c75ba56,patterns,select,Qwen/Qwen3.5-27B,5,1,True,technical,405,10,7.8165,129.8032,25.9606,129.8032,12.98032,My smart home device won't connect to the WiFi after the firmware update.
+f994759f,patterns,select,Qwen/Qwen3.5-27B,5,1,True,general,410,10,7.8333,128.4232,25.6846,128.4232,12.84232,I'm moving next month and need to transfer my service to a new address.
+7b7c778c,patterns,select,Qwen/Qwen3.5-27B,5,1,True,billing,400,10,7.818,128.4232,25.6846,128.4232,12.84232,Your website says my payment failed but my bank shows it went through.
+795b2aa7,patterns,select,Qwen/Qwen3.5-27B,5,1,True,cancellation,425,15,8.359,135.2342,27.0468,135.2342,9.015613,I've been a customer for 5 years and I'm thinking about switching to a competitor.
+3c289ce5,patterns,select,Qwen/Qwen3.5-27B,5,1,True,technical,405,10,7.8683,128.4232,25.6846,128.4232,12.84232,The remote control for my cable box isn't responding to any button presses.
+d0603e57,patterns,select,Qwen/Qwen3.5-27B,5,1,True,general,420,10,7.7698,128.4232,25.6846,128.4232,12.84232,I'd like to add a second line to my family plan. What are the options?
+355f3154,patterns,select,Qwen/Qwen3.5-27B,5,1,True,billing,425,10,7.8315,128.4232,25.6846,128.4232,12.84232,My bill this month is $40 higher than usual and I don't see any explanation.
+fa93369e,patterns,select,Qwen/Qwen3.5-27B,5,1,True,technical,405,10,7.8174,128.4232,25.6846,128.4232,12.84232,I can't log into my account even after resetting my password three times.
+73581d25,patterns,select,Qwen/Qwen3.5-27B,5,1,True,billing,390,10,7.7906,128.4232,25.6846,128.4232,12.84232,Do you offer any senior citizen discounts on your monthly plans?
+867e4d9a,patterns,select,Qwen/Qwen3.5-27B,5,1,True,technical,410,10,7.7673,128.4232,25.6846,128.4232,12.84232,The picture quality on my streaming is terrible even though I have gigabit internet.
+fc2fb3ee,patterns,select,Qwen/Qwen3.5-27B,5,1,True,billing,395,10,7.8371,129.7824,25.9565,129.7824,12.97824,I want to downgrade my plan but keep my current phone number.
+a83e0c89,patterns,select,Qwen/Qwen3.5-27B,5,1,True,billing,395,10,7.7487,128.4232,25.6846,128.4232,12.84232,Someone made unauthorized purchases on my account and I need it frozen.
+e3aebafa,patterns,select,Qwen/Qwen3.5-27B,5,1,True,technical,400,10,8.6018,140.5293,28.1059,140.5293,14.05293,How do I set up parental controls on the new set-top box?
+3ef89d32,patterns,json,Qwen/Qwen3.5-27B,5,1,True,billing,440,80,1.7759,70.7277,14.1455,70.7277,0.884096,I was charged twice for my subscription last month and I need a refund immediately.
+0df2774f,patterns,json,Qwen/Qwen3.5-27B,5,1,True,technical,445,80,1.6829,68.1914,13.6383,68.1914,0.852392,My internet keeps dropping every 30 minutes and I've already restarted the router.
+dadb8d86,patterns,json,Qwen/Qwen3.5-27B,5,1,True,cancellation,435,84,1.8622,71.479,14.2958,71.479,0.85094,I want to cancel my account effective immediately and get a prorated refund.
+83e85bf7,patterns,json,Qwen/Qwen3.5-27B,5,1,True,general,430,80,1.8283,71.479,14.2958,71.479,0.893487,What are your business hours and do you have a location near downtown?
+135ef535,patterns,json,Qwen/Qwen3.5-27B,5,1,True,technical,450,80,1.6965,69.0507,13.8101,69.0507,0.863134,The app crashes every time I try to upload a file larger than 10MB.
+07495285,patterns,json,Qwen/Qwen3.5-27B,5,1,True,general,420,80,1.7548,69.0507,13.8101,69.0507,0.863134,Can you explain the difference between your premium and basic plans?
+1ed5ae5d,patterns,json,Qwen/Qwen3.5-27B,5,1,True,billing,425,80,1.7937,71.479,14.2958,71.479,0.893487,I need to update the credit card on file for automatic payments.
+3ab7cd7c,patterns,json,Qwen/Qwen3.5-27B,5,1,True,technical,435,80,1.8227,71.479,14.2958,71.479,0.893487,My smart home device won't connect to the WiFi after the firmware update.
+0396ad54,patterns,json,Qwen/Qwen3.5-27B,5,1,True,general,440,77,1.6884,69.0507,13.8101,69.0507,0.896762,I'm moving next month and need to transfer my service to a new address.
+48f90705,patterns,json,Qwen/Qwen3.5-27B,5,1,True,billing,430,80,1.6947,69.0507,13.8101,69.0507,0.863134,Your website says my payment failed but my bank shows it went through.
+9d0d654d,patterns,json,Qwen/Qwen3.5-27B,5,1,True,cancellation,455,85,1.8208,71.479,14.2958,71.479,0.840929,I've been a customer for 5 years and I'm thinking about switching to a competitor.
+b9ae0f95,patterns,json,Qwen/Qwen3.5-27B,5,1,True,technical,435,80,1.6434,69.0507,13.8101,69.0507,0.863134,The remote control for my cable box isn't responding to any button presses.
+dc7d02a0,patterns,json,Qwen/Qwen3.5-27B,5,1,True,general,450,80,1.7469,71.479,14.2958,71.479,0.893487,I'd like to add a second line to my family plan. What are the options?
+c9ce821f,patterns,json,Qwen/Qwen3.5-27B,5,1,True,billing,455,80,1.7578,71.479,14.2958,71.479,0.893487,My bill this month is $40 higher than usual and I don't see any explanation.
+cb0410f8,patterns,json,Qwen/Qwen3.5-27B,5,1,True,technical,435,80,1.6766,69.0507,13.8101,69.0507,0.863134,I can't log into my account even after resetting my password three times.
+d8825a2d,patterns,json,Qwen/Qwen3.5-27B,5,1,True,billing,420,80,1.6627,69.0507,13.8101,69.0507,0.863134,Do you offer any senior citizen discounts on your monthly plans?
+4eb3838a,patterns,json,Qwen/Qwen3.5-27B,5,1,True,technical,440,80,1.678,69.0507,13.8101,69.0507,0.863134,The picture quality on my streaming is terrible even though I have gigabit internet.
+bc1dcf75,patterns,json,Qwen/Qwen3.5-27B,5,1,True,billing,425,80,1.5965,67.4074,13.4815,67.4074,0.842592,I want to downgrade my plan but keep my current phone number.
+c605f082,patterns,json,Qwen/Qwen3.5-27B,5,2,True,billing,1230,160,2.5172,92.2777,9.2278,92.2777,0.576736,Someone made unauthorized purchases on my account and I need it frozen.
+3dd99787,patterns,json,Qwen/Qwen3.5-27B,5,1,True,technical,430,80,2.4309,89.6822,17.9364,89.6822,1.121027,How do I set up parental controls on the new set-top box?
+ffe71afd,patterns,cot_select,Qwen/Qwen3.5-27B,5,1,True,billing,585,4530,44.2024,5732.1267,1146.4253,5732.1267,1.26537,I was charged twice for my subscription last month and I need a refund immediately.
+dfe95916,patterns,cot_select,Qwen/Qwen3.5-27B,5,2,True,technical,1560,7957,70.8796,8606.0375,860.6037,8606.0375,1.081568,My internet keeps dropping every 30 minutes and I've already restarted the router.
+d2e61006,patterns,cot_select,Qwen/Qwen3.5-27B,5,1,True,cancellation,580,4200,41.5234,5427.4705,1085.4941,5427.4705,1.292255,I want to cancel my account effective immediately and get a prorated refund.
+c810ad5b,patterns,cot_select,Qwen/Qwen3.5-27B,5,1,True,general,575,3802,35.1331,4688.0599,937.612,4688.0599,1.233051,What are your business hours and do you have a location near downtown?
+f1e413df,patterns,cot_select,Qwen/Qwen3.5-27B,5,1,True,technical,595,4292,42.586,5551.9017,1110.3803,5551.9017,1.293547,The app crashes every time I try to upload a file larger than 10MB.
+1d9b4778,patterns,cot_select,Qwen/Qwen3.5-27B,5,2,True,general,1510,42624,512.141,50300.9761,5030.0976,50300.9761,1.180109,Can you explain the difference between your premium and basic plans?
+3446f06c,patterns,cot_select,Qwen/Qwen3.5-27B,5,1,True,billing,570,3775,33.9913,4543.8008,908.7602,4543.8008,1.203656,I need to update the credit card on file for automatic payments.
+d1e42077,patterns,cot_select,Qwen/Qwen3.5-27B,5,2,True,technical,1540,8881,86.2317,10201.6845,1020.1684,10201.6845,1.148709,My smart home device won't connect to the WiFi after the firmware update.
+6a1cffc6,patterns,cot_select,Qwen/Qwen3.5-27B,5,1,True,general,585,5224,53.6331,6777.5557,1355.5111,6777.5557,1.297388,I'm moving next month and need to transfer my service to a new address.
+4c8d7dd7,patterns,cot_select,Qwen/Qwen3.5-27B,5,1,True,billing,575,4512,41.522,5433.2062,1086.6412,5433.2062,1.204168,Your website says my payment failed but my bank shows it went through.
+d70cff63,patterns,cot_select,Qwen/Qwen3.5-27B,5,2,True,cancellation,1600,12127,152.623,16806.9975,1680.6998,16806.9975,1.385916,I've been a customer for 5 years and I'm thinking about switching to a competitor.
+384a5ef9,patterns,cot_select,Qwen/Qwen3.5-27B,5,1,True,technical,580,3790,38.3115,5061.8274,1012.3655,5061.8274,1.335575,The remote control for my cable box isn't responding to any button presses.
+709ff6e8,patterns,cot_select,Qwen/Qwen3.5-27B,5,1,True,general,595,22755,248.9127,25894.3186,5178.8637,25894.3186,1.137962,I'd like to add a second line to my family plan. What are the options?
+5f6eafed,patterns,cot_select,Qwen/Qwen3.5-27B,5,1,True,billing,600,4283,38.501,5085.2756,1017.0551,5085.2756,1.187316,My bill this month is $40 higher than usual and I don't see any explanation.
+b1631d97,patterns,cot_select,Qwen/Qwen3.5-27B,5,1,True,technical,580,3492,35.3449,4705.6732,941.1346,4705.6732,1.347558,I can't log into my account even after resetting my password three times.
+fe6a7d5f,patterns,cot_select,Qwen/Qwen3.5-27B,5,1,True,billing,565,8965,96.902,11270.8526,2254.1705,11270.8526,1.257206,Do you offer any senior citizen discounts on your monthly plans?
+0e9c5f18,patterns,cot_select,Qwen/Qwen3.5-27B,5,1,True,technical,585,4478,46.931,6037.6362,1207.5272,6037.6362,1.348289,The picture quality on my streaming is terrible even though I have gigabit internet.
+7cdd3fa5,patterns,cot_select,Qwen/Qwen3.5-27B,5,1,True,billing,570,18087,227.3556,23884.1035,4776.8207,23884.1035,1.320512,I want to downgrade my plan but keep my current phone number.
+f87ea794,patterns,cot_select,Qwen/Qwen3.5-27B,5,1,True,billing,570,6146,80.1724,9577.8839,1915.5768,9577.8839,1.558393,Someone made unauthorized purchases on my account and I need it frozen.
+421d10b2,patterns,cot_select,Qwen/Qwen3.5-27B,5,1,True,technical,575,3907,51.8452,6587.0169,1317.4034,6587.0169,1.685953,How do I set up parental controls on the new set-top box?
+bf8ffe15,patterns,nl_debate,Qwen/Qwen3.5-27B,5,1,True,billing,645,6922,73.993,7441.6923,1488.3385,7441.6923,1.075078,I was charged twice for my subscription last month and I need a refund immediately.
+982f6c6b,patterns,nl_debate,Qwen/Qwen3.5-27B,5,1,True,technical,650,7069,91.731,8908.8927,1781.7785,8908.8927,1.260276,My internet keeps dropping every 30 minutes and I've already restarted the router.
+bda7ac2f,patterns,nl_debate,Qwen/Qwen3.5-27B,5,1,True,cancellation,640,7357,82.7264,8175.1858,1635.0372,8175.1858,1.111212,I want to cancel my account effective immediately and get a prorated refund.
+43a46bad,patterns,nl_debate,Qwen/Qwen3.5-27B,5,1,True,general,635,6529,74.0149,7441.6923,1488.3385,7441.6923,1.139791,What are your business hours and do you have a location near downtown?
+003f047f,patterns,nl_debate,Qwen/Qwen3.5-27B,5,1,True,technical,655,8203,77.887,7777.3701,1555.474,7777.3701,0.948113,The app crashes every time I try to upload a file larger than 10MB.
+ac525e9c,patterns,nl_debate,Qwen/Qwen3.5-27B,5,2,True,general,1915,20838,323.8186,26123.5336,2612.3534,26123.5336,1.253649,Can you explain the difference between your premium and basic plans?
+c3d92d62,patterns,nl_debate,Qwen/Qwen3.5-27B,5,1,True,billing,630,7430,71.7367,7250.0463,1450.0093,7250.0463,0.97578,I need to update the credit card on file for automatic payments.
+dcc4bc9b,patterns,nl_debate,Qwen/Qwen3.5-27B,5,1,True,technical,640,7445,74.1522,7458.9559,1491.7912,7458.9559,1.001875,My smart home device won't connect to the WiFi after the firmware update.
+537c470e,patterns,nl_debate,Qwen/Qwen3.5-27B,5,1,True,general,645,11955,135.6234,12396.2789,2479.2558,12396.2789,1.036912,I'm moving next month and need to transfer my service to a new address.
+4cbc9735,patterns,nl_debate,Qwen/Qwen3.5-27B,5,1,True,billing,635,7863,85.3589,8397.1079,1679.4216,8397.1079,1.067927,Your website says my payment failed but my bank shows it went through.
+440b182f,patterns,nl_debate,Qwen/Qwen3.5-27B,5,1,True,cancellation,660,11828,421.9895,32980.9516,6596.1903,32980.9516,2.788379,I've been a customer for 5 years and I'm thinking about switching to a competitor.
+4681cf09,patterns,nl_debate,Qwen/Qwen3.5-27B,5,1,True,technical,640,7844,72.6062,7324.1557,1464.8311,7324.1557,0.933727,The remote control for my cable box isn't responding to any button presses.
+88490d31,patterns,nl_debate,Qwen/Qwen3.5-27B,5,2,True,general,1975,32490,616.1085,46665.8998,4666.59,46665.8998,1.436316,I'd like to add a second line to my family plan. What are the options?
+80146108,patterns,nl_debate,Qwen/Qwen3.5-27B,5,1,True,billing,660,7726,75.7581,7592.1939,1518.4388,7592.1939,0.982681,My bill this month is $40 higher than usual and I don't see any explanation.
+9d1f0c84,patterns,nl_debate,Qwen/Qwen3.5-27B,5,1,True,technical,640,7240,85.4004,8401.0231,1680.2046,8401.0231,1.160362,I can't log into my account even after resetting my password three times.
+f0d9543f,patterns,nl_debate,Qwen/Qwen3.5-27B,5,1,True,billing,625,20189,204.577,17609.6671,3521.9334,17609.6671,0.872241,Do you offer any senior citizen discounts on your monthly plans?
+18d563f3,patterns,nl_debate,Qwen/Qwen3.5-27B,5,1,True,technical,645,6744,77.9717,7789.8839,1557.9768,7789.8839,1.155084,The picture quality on my streaming is terrible even though I have gigabit internet.
+21becff8,patterns,nl_debate,Qwen/Qwen3.5-27B,5,1,True,billing,630,20746,228.1412,19313.7439,3862.7488,19313.7439,0.930962,I want to downgrade my plan but keep my current phone number.
+83701cc1,patterns,nl_debate,Qwen/Qwen3.5-27B,5,1,True,billing,630,9995,150.403,13529.1132,2705.8226,13529.1132,1.353588,Someone made unauthorized purchases on my account and I need it frozen.
+d2a182f1,patterns,nl_debate,Qwen/Qwen3.5-27B,5,1,True,technical,635,5963,82.0725,8129.3321,1625.8664,8129.3321,1.363296,How do I set up parental controls on the new set-top box?

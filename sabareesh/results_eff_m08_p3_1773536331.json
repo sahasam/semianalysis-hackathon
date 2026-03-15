@@ -1,0 +1,43 @@
+{
+  "mem_fraction": 0.8,
+  "num_panels": 3,
+  "num_agents": 5,
+  "max_concurrent": 15,
+  "total_requests": 55,
+  "total_input_tokens": 78973,
+  "total_output_tokens": 18533,
+  "total_tokens": 97506,
+  "total_time_s": 20.17,
+  "output_tokens_per_s": 918.7,
+  "total_energy_j": 14457.867,
+  "j_per_request": 262.9,
+  "j_per_output_token": 0.7801,
+  "j_per_total_token": 0.1483,
+  "avg_watts": 717.0,
+  "panels": {
+    "0": {
+      "panel_id": 0,
+      "rounds": 3,
+      "total_requests": 15,
+      "total_input_tokens": 20212,
+      "total_output_tokens": 5085,
+      "consensus": true
+    },
+    "2": {
+      "panel_id": 2,
+      "rounds": 4,
+      "total_requests": 20,
+      "total_input_tokens": 28314,
+      "total_output_tokens": 6468,
+      "consensus": true
+    },
+    "1": {
+      "panel_id": 1,
+      "rounds": 4,
+      "total_requests": 20,
+      "total_input_tokens": 30447,
+      "total_output_tokens": 6980,
+      "consensus": true
+    }
+  }
+}

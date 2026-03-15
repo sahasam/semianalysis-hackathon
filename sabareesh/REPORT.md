@@ -141,23 +141,60 @@ Moving from 1 to 3 concurrent panels reduced energy-per-request by **60%** with 
 - Shared system prompts enable KV cache reuse
 - Overlapping rounds from different panels fill GPU idle gaps
 
-### 4.3 Orchestration Overhead is Negligible
+### 4.3 Full Efficiency Sweep — J/output_token across KV Cache Sizes and Concurrency
+
+We swept 3 KV cache allocations × 6 concurrency levels = 18 data points:
+
+| KV Cache (`mem_fraction`) | Concurrent | Output tok/s | **J/output_token** | Watts |
+|---------------------------|-----------|-------------|-------------------|-------|
+| 0.80 | 5 | 381 | 1.744 | 664 W |
+| 0.80 | 15 | 919 | 0.780 | 717 W |
+| 0.80 | 35 | 1,378 | 0.553 | 763 W |
+| 0.80 | 70 | 1,964 | 0.414 | 814 W |
+| **0.80** | **100** | **2,275** | **0.369** | **840 W** |
+| 0.80 | 150 | 2,082 | 0.380 | 791 W |
+| 0.88 | 5 | 409 | 1.683 | 688 W |
+| 0.88 | 15 | 852 | 0.826 | 704 W |
+| 0.88 | 35 | 1,331 | 0.555 | 738 W |
+| 0.88 | 70 | 1,868 | 0.422 | 788 W |
+| 0.88 | 100 | 2,140 | 0.378 | 808 W |
+| 0.88 | 150 | 2,028 | 0.374 | 758 W |
+| 0.93 | 5 | 401 | 1.720 | 690 W |
+| 0.93 | 15 | 939 | 0.760 | 714 W |
+| 0.93 | 35 | 1,330 | 0.557 | 742 W |
+| 0.93 | 70 | 1,754 | 0.449 | 787 W |
+| 0.93 | 100 | 2,163 | 0.380 | 822 W |
+| **0.93** | **150** | **2,155** | **0.363** | **782 W** |
+
+**Peak efficiency: 0.363 J/output_token** at `mem_fraction=0.93`, 150 concurrent agents.
+
+Key observations:
+- **5x efficiency gain** from 5→100 concurrent (1.74 → 0.37 J/tok)
+- **Throughput saturates at ~2,200 output tok/s** regardless of cache config
+- **KV cache size barely matters until 150 concurrent** — all 3 configs converge at ~0.37 J/tok at 100 concurrent
+- **Sweet spot: 100 concurrent (20 panels × 5 agents)** — best throughput (2,275 tok/s) with near-optimal efficiency
+- **Beyond 100 concurrent, throughput drops slightly** — GPU becomes compute-bound, not memory-bound
+- GPU power increases only 664→840W (+26%) while doing 6x more useful work
+
+### 4.4 Orchestration Overhead is Negligible
 
 LangGraph's orchestration overhead is <1% of total energy. The entire energy budget is spent on LLM inference. Optimization efforts should focus on:
 - Maximizing GPU utilization via concurrency
 - Reducing unnecessary token generation (shorter prompts, constrained output)
 - Leveraging KV cache reuse through prompt engineering
 
-### 4.4 Qwen3.5-27B on B200: Practical Performance
+### 4.5 Qwen3.5-27B on B200: Practical Performance
 
 | Metric | Value |
 |--------|-------|
 | Single-request decode | ~46 tok/s (CUDA graphs on) |
 | 7-concurrent decode | ~184 tok/s |
+| 100-concurrent output | ~2,275 tok/s |
 | Prefill throughput | ~3,000 tok/s |
 | Model memory | ~55 GB (bf16) |
-| Available KV cache | ~128 GB |
-| Max context (262K tokens) | Easily fits |
+| Available KV cache | 100-125 GB (depending on config) |
+| Peak efficiency | 0.363 J/output_token at 150 concurrent |
+| Efficiency sweet spot | 0.369 J/output_token at 100 concurrent |
 
 ## 5. What the Consensus Agents Actually Decided
 

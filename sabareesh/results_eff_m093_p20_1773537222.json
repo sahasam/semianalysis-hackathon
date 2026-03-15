@@ -1,0 +1,179 @@
+{
+  "mem_fraction": 0.93,
+  "num_panels": 20,
+  "num_agents": 5,
+  "max_concurrent": 100,
+  "total_requests": 365,
+  "total_input_tokens": 508017,
+  "total_output_tokens": 119867,
+  "total_tokens": 627884,
+  "total_time_s": 55.43,
+  "output_tokens_per_s": 2162.5,
+  "total_energy_j": 45539.906,
+  "j_per_request": 124.8,
+  "j_per_output_token": 0.3799,
+  "j_per_total_token": 0.0725,
+  "avg_watts": 822.0,
+  "panels": {
+    "9": {
+      "panel_id": 9,
+      "rounds": 3,
+      "total_requests": 15,
+      "total_input_tokens": 18332,
+      "total_output_tokens": 4740,
+      "consensus": true
+    },
+    "5": {
+      "panel_id": 5,
+      "rounds": 3,
+      "total_requests": 15,
+      "total_input_tokens": 18071,
+      "total_output_tokens": 4651,
+      "consensus": true
+    },
+    "14": {
+      "panel_id": 14,
+      "rounds": 3,
+      "total_requests": 15,
+      "total_input_tokens": 18768,
+      "total_output_tokens": 4710,
+      "consensus": true
+    },
+    "7": {
+      "panel_id": 7,
+      "rounds": 3,
+      "total_requests": 15,
+      "total_input_tokens": 19016,
+      "total_output_tokens": 4798,
+      "consensus": true
+    },
+    "0": {
+      "panel_id": 0,
+      "rounds": 3,
+      "total_requests": 15,
+      "total_input_tokens": 18840,
+      "total_output_tokens": 4749,
+      "consensus": true
+    },
+    "2": {
+      "panel_id": 2,
+      "rounds": 3,
+      "total_requests": 15,
+      "total_input_tokens": 18657,
+      "total_output_tokens": 4791,
+      "consensus": true
+    },
+    "12": {
+      "panel_id": 12,
+      "rounds": 3,
+      "total_requests": 15,
+      "total_input_tokens": 19181,
+      "total_output_tokens": 4887,
+      "consensus": true
+    },
+    "10": {
+      "panel_id": 10,
+      "rounds": 4,
+      "total_requests": 20,
+      "total_input_tokens": 27936,
+      "total_output_tokens": 6401,
+      "consensus": true
+    },
+    "1": {
+      "panel_id": 1,
+      "rounds": 4,
+      "total_requests": 20,
+      "total_input_tokens": 29013,
+      "total_output_tokens": 6475,
+      "consensus": true
+    },
+    "15": {
+      "panel_id": 15,
+      "rounds": 4,
+      "total_requests": 20,
+      "total_input_tokens": 28926,
+      "total_output_tokens": 6677,
+      "consensus": true
+    },
+    "17": {
+      "panel_id": 17,
+      "rounds": 4,
+      "total_requests": 20,
+      "total_input_tokens": 28012,
+      "total_output_tokens": 6393,
+      "consensus": true
+    },
+    "4": {
+      "panel_id": 4,
+      "rounds": 4,
+      "total_requests": 20,
+      "total_input_tokens": 28301,
+      "total_output_tokens": 6413,
+      "consensus": true
+    },
+    "18": {
+      "panel_id": 18,
+      "rounds": 4,
+      "total_requests": 20,
+      "total_input_tokens": 28784,
+      "total_output_tokens": 6587,
+      "consensus": true
+    },
+    "3": {
+      "panel_id": 3,
+      "rounds": 4,
+      "total_requests": 20,
+      "total_input_tokens": 28260,
+      "total_output_tokens": 6350,
+      "consensus": true
+    },
+    "11": {
+      "panel_id": 11,
+      "rounds": 4,
+      "total_requests": 20,
+      "total_input_tokens": 29558,
+      "total_output_tokens": 6829,
+      "consensus": true
+    },
+    "19": {
+      "panel_id": 19,
+      "rounds": 4,
+      "total_requests": 20,
+      "total_input_tokens": 29171,
+      "total_output_tokens": 6744,
+      "consensus": true
+    },
+    "8": {
+      "panel_id": 8,
+      "rounds": 4,
+      "total_requests": 20,
+      "total_input_tokens": 29496,
+      "total_output_tokens": 6905,
+      "consensus": true
+    },
+    "13": {
+      "panel_id": 13,
+      "rounds": 4,
+      "total_requests": 20,
+      "total_input_tokens": 29929,
+      "total_output_tokens": 6809,
+      "consensus": true
+    },
+    "16": {
+      "panel_id": 16,
+      "rounds": 4,
+      "total_requests": 20,
+      "total_input_tokens": 29201,
+      "total_output_tokens": 6846,
+      "consensus": true
+    },
+    "6": {
+      "panel_id": 6,
+      "rounds": 4,
+      "total_requests": 20,
+      "total_input_tokens": 30565,
+      "total_output_tokens": 7112,
+      "consensus": true
+    }
+  }
+}

@@ -1,0 +1,259 @@
+{
+  "mem_fraction": 0.93,
+  "num_panels": 30,
+  "num_agents": 5,
+  "max_concurrent": 150,
+  "total_requests": 520,
+  "total_input_tokens": 708535,
+  "total_output_tokens": 170371,
+  "total_tokens": 878906,
+  "total_time_s": 79.05,
+  "output_tokens_per_s": 2155.3,
+  "total_energy_j": 61824.327,
+  "j_per_request": 118.9,
+  "j_per_output_token": 0.3629,
+  "j_per_total_token": 0.0703,
+  "avg_watts": 782.0,
+  "panels": {
+    "15": {
+      "panel_id": 15,
+      "rounds": 3,
+      "total_requests": 15,
+      "total_input_tokens": 17933,
+      "total_output_tokens": 4585,
+      "consensus": true
+    },
+    "23": {
+      "panel_id": 23,
+      "rounds": 3,
+      "total_requests": 15,
+      "total_input_tokens": 18391,
+      "total_output_tokens": 4728,
+      "consensus": true
+    },
+    "12": {
+      "panel_id": 12,
+      "rounds": 3,
+      "total_requests": 15,
+      "total_input_tokens": 18623,
+      "total_output_tokens": 4757,
+      "consensus": true
+    },
+    "28": {
+      "panel_id": 28,
+      "rounds": 3,
+      "total_requests": 15,
+      "total_input_tokens": 18787,
+      "total_output_tokens": 4805,
+      "consensus": true
+    },
+    "0": {
+      "panel_id": 0,
+      "rounds": 3,
+      "total_requests": 15,
+      "total_input_tokens": 19524,
+      "total_output_tokens": 4855,
+      "consensus": true
+    },
+    "3": {
+      "panel_id": 3,
+      "rounds": 3,
+      "total_requests": 15,
+      "total_input_tokens": 19117,
+      "total_output_tokens": 4952,
+      "consensus": true
+    },
+    "2": {
+      "panel_id": 2,
+      "rounds": 3,
+      "total_requests": 15,
+      "total_input_tokens": 18086,
+      "total_output_tokens": 4663,
+      "consensus": true
+    },
+    "29": {
+      "panel_id": 29,
+      "rounds": 3,
+      "total_requests": 15,
+      "total_input_tokens": 18027,
+      "total_output_tokens": 4656,
+      "consensus": true
+    },
+    "26": {
+      "panel_id": 26,
+      "rounds": 3,
+      "total_requests": 15,
+      "total_input_tokens": 18249,
+      "total_output_tokens": 4662,
+      "consensus": true
+    },
+    "5": {
+      "panel_id": 5,
+      "rounds": 3,
+      "total_requests": 15,
+      "total_input_tokens": 18326,
+      "total_output_tokens": 4718,
+      "consensus": true
+    },
+    "14": {
+      "panel_id": 14,
+      "rounds": 3,
+      "total_requests": 15,
+      "total_input_tokens": 18946,
+      "total_output_tokens": 4896,
+      "consensus": true
+    },
+    "7": {
+      "panel_id": 7,
+      "rounds": 3,
+      "total_requests": 15,
+      "total_input_tokens": 18728,
+      "total_output_tokens": 4628,
+      "consensus": true
+    },
+    "24": {
+      "panel_id": 24,
+      "rounds": 3,
+      "total_requests": 15,
+      "total_input_tokens": 19463,
+      "total_output_tokens": 5034,
+      "consensus": true
+    },
+    "4": {
+      "panel_id": 4,
+      "rounds": 3,
+      "total_requests": 15,
+      "total_input_tokens": 19031,
+      "total_output_tokens": 4987,
+      "consensus": true
+    },
+    "21": {
+      "panel_id": 21,
+      "rounds": 3,
+      "total_requests": 15,
+      "total_input_tokens": 19167,
+      "total_output_tokens": 4893,
+      "consensus": true
+    },
+    "10": {
+      "panel_id": 10,
+      "rounds": 3,
+      "total_requests": 15,
+      "total_input_tokens": 19332,
+      "total_output_tokens": 4902,
+      "consensus": true
+    },
+    "18": {
+      "panel_id": 18,
+      "rounds": 4,
+      "total_requests": 20,
+      "total_input_tokens": 28375,
+      "total_output_tokens": 6498,
+      "consensus": true
+    },
+    "1": {
+      "panel_id": 1,
+      "rounds": 4,
+      "total_requests": 20,
+      "total_input_tokens": 30325,
+      "total_output_tokens": 6896,
+      "consensus": true
+    },
+    "8": {
+      "panel_id": 8,
+      "rounds": 4,
+      "total_requests": 20,
+      "total_input_tokens": 27639,
+      "total_output_tokens": 6182,
+      "consensus": true
+    },
+    "13": {
+      "panel_id": 13,
+      "rounds": 4,
+      "total_requests": 20,
+      "total_input_tokens": 29548,
+      "total_output_tokens": 6798,
+      "consensus": true
+    },
+    "11": {
+      "panel_id": 11,
+      "rounds": 4,
+      "total_requests": 20,
+      "total_input_tokens": 27541,
+      "total_output_tokens": 6314,
+      "consensus": true
+    },
+    "6": {
+      "panel_id": 6,
+      "rounds": 4,
+      "total_requests": 20,
+      "total_input_tokens": 30570,
+      "total_output_tokens": 7057,
+      "consensus": true
+    },
+    "9": {
+      "panel_id": 9,
+      "rounds": 4,
+      "total_requests": 20,
+      "total_input_tokens": 28534,
+      "total_output_tokens": 6549,
+      "consensus": true
+    },
+    "25": {
+      "panel_id": 25,
+      "rounds": 4,
+      "total_requests": 20,
+      "total_input_tokens": 28217,
+      "total_output_tokens": 6437,
+      "consensus": true
+    },
+    "19": {
+      "panel_id": 19,
+      "rounds": 4,
+      "total_requests": 20,
+      "total_input_tokens": 28535,
+      "total_output_tokens": 6574,
+      "consensus": true
+    },
+    "17": {
+      "panel_id": 17,
+      "rounds": 4,
+      "total_requests": 20,
+      "total_input_tokens": 30663,
+      "total_output_tokens": 7068,
+      "consensus": true
+    },
+    "22": {
+      "panel_id": 22,
+      "rounds": 4,
+      "total_requests": 20,
+      "total_input_tokens": 29090,
+      "total_output_tokens": 6599,
+      "consensus": true
+    },
+    "16": {
+      "panel_id": 16,
+      "rounds": 4,
+      "total_requests": 20,
+      "total_input_tokens": 29385,
+      "total_output_tokens": 6783,
+      "consensus": true
+    },
+    "27": {
+      "panel_id": 27,
+      "rounds": 4,
+      "total_requests": 20,
+      "total_input_tokens": 30080,
+      "total_output_tokens": 6990,
+      "consensus": true
+    },
+    "20": {
+      "panel_id": 20,
+      "rounds": 4,
+      "total_requests": 20,
+      "total_input_tokens": 30303,
+      "total_output_tokens": 6905,
+      "consensus": true
+    }
+  }
+}

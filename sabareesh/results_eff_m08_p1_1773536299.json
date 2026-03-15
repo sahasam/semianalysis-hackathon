@@ -1,0 +1,27 @@
+{
+  "mem_fraction": 0.8,
+  "num_panels": 1,
+  "num_agents": 5,
+  "max_concurrent": 5,
+  "total_requests": 15,
+  "total_input_tokens": 18457,
+  "total_output_tokens": 4630,
+  "total_tokens": 23087,
+  "total_time_s": 12.16,
+  "output_tokens_per_s": 380.7,
+  "total_energy_j": 8074.244,
+  "j_per_request": 538.3,
+  "j_per_output_token": 1.7439,
+  "j_per_total_token": 0.3497,
+  "avg_watts": 664.0,
+  "panels": {
+    "0": {
+      "panel_id": 0,
+      "rounds": 3,
+      "total_requests": 15,
+      "total_input_tokens": 18457,
+      "total_output_tokens": 4630,
+      "consensus": true
+    }
+  }
+}

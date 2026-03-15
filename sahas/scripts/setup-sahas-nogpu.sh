@@ -3,11 +3,11 @@
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=16G
 #SBATCH --time=02:00:00
-#SBATCH --output=sahas/logs/%x-%j.out
-#SBATCH --error=sahas/logs/%x-%j.err
+#SBATCH --output=logs/%x-%j.out
+#SBATCH --error=logs/%x-%j.err
 
 set -e
-mkdir -p ~/logs
+mkdir -p ~/sahas/logs
 
 # Use /tmp for build artifacts
 export TMPDIR=/tmp/$USER-setup
@@ -28,14 +28,23 @@ echo "=== Creating conda environment 'sahas_bench' ==="
 conda create -n sahas_bench python=3.11 -y
 conda activate sahas_bench
 
-echo "=== Installing Python packages (CPU versions for now) ==="
+echo "=== Installing Python packages ==="
 export PIP_CACHE_DIR=$TMPDIR/pip-cache
 mkdir -p $PIP_CACHE_DIR
 
 pip install --upgrade pip
-pip install huggingface_hub
+
+# Install in order to resolve dependencies properly
+pip install huggingface_hub[cli]
 pip install langgraph langchain-openai langchain-core
 pip install aiperf
+
+# Fix the orjson conflict
+pip install --upgrade orjson
+
+echo "=== Verifying huggingface-cli ==="
+which huggingface-cli
+huggingface-cli --version
 
 echo "=== Downloading Qwen3.5-122B-A10B-FP8 model weights ==="
 echo "This is ~122GB and will take a while..."
@@ -45,6 +54,3 @@ huggingface-cli download Qwen/Qwen3.5-122B-A10B-FP8
 
 # Clean up temp files
 rm -rf $TMPDIR
-
-echo "=== Phase 1 complete ==="
-echo "Next step: Run the GPU setup script to install PyTorch + SGLang"

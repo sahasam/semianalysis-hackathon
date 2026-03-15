@@ -1,0 +1,75 @@
+{
+  "mem_fraction": 0.93,
+  "num_panels": 7,
+  "num_agents": 5,
+  "max_concurrent": 35,
+  "total_requests": 115,
+  "total_input_tokens": 153790,
+  "total_output_tokens": 37440,
+  "total_tokens": 191230,
+  "total_time_s": 28.14,
+  "output_tokens_per_s": 1330.3,
+  "total_energy_j": 20869.64,
+  "j_per_request": 181.5,
+  "j_per_output_token": 0.5574,
+  "j_per_total_token": 0.1091,
+  "avg_watts": 742.0,
+  "panels": {
+    "5": {
+      "panel_id": 5,
+      "rounds": 2,
+      "total_requests": 10,
+      "total_input_tokens": 9259,
+      "total_output_tokens": 2989,
+      "consensus": true
+    },
+    "3": {
+      "panel_id": 3,
+      "rounds": 3,
+      "total_requests": 15,
+      "total_input_tokens": 18216,
+      "total_output_tokens": 4661,
+      "consensus": true
+    },
+    "2": {
+      "panel_id": 2,
+      "rounds": 3,
+      "total_requests": 15,
+      "total_input_tokens": 19087,
+      "total_output_tokens": 4896,
+      "consensus": true
+    },
+    "0": {
+      "panel_id": 0,
+      "rounds": 3,
+      "total_requests": 15,
+      "total_input_tokens": 18604,
+      "total_output_tokens": 4708,
+      "consensus": true
+    },
+    "1": {
+      "panel_id": 1,
+      "rounds": 4,
+      "total_requests": 20,
+      "total_input_tokens": 28796,
+      "total_output_tokens": 6542,
+      "consensus": true
+    },
+    "4": {
+      "panel_id": 4,
+      "rounds": 4,
+      "total_requests": 20,
+      "total_input_tokens": 29672,
+      "total_output_tokens": 6737,
+      "consensus": true
+    },
+    "6": {
+      "panel_id": 6,
+      "rounds": 4,
+      "total_requests": 20,
+      "total_input_tokens": 30156,
+      "total_output_tokens": 6907,
+      "consensus": true
+    }
+  }
+}

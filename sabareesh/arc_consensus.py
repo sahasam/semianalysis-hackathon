@@ -164,7 +164,7 @@ def sglang_chat(base_url, model, messages, max_tokens=500, temperature=0.7, extr
     if extra_body:
         body.update(extra_body)
 
-    resp = http_requests.post(f"{base_url}/v1/chat/completions", json=body, timeout=120)
+    resp = http_requests.post(f"{base_url}/v1/chat/completions", json=body, timeout=600)
     resp.raise_for_status()
     data = resp.json()
 
